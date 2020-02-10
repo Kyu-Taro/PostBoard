@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\JWTAuth;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -47,7 +48,7 @@ class RegisterController extends Controller
     {
         $validator = $this->validator($request->all());
         if(!$validator->fails()){
-            $user = $this->create($request->all);
+            $user = $this->create($request->all());
             $token = $this->auth->attempt($request->only('email', 'password'));
 
             return [

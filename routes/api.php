@@ -18,11 +18,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['prefix' => '/auth', ['middleware' => 'throttle:20,5']], function(){
-    Route::post('/register', 'Auth\RegisterController@register');
+    Route::match(["POST", "options"], '/register', 'Auth\RegisterController@register');
     Route::post('/login', 'Auth\LoginController@login');
 });
 
 Route::group(['middleware' => 'auth:api'], function(){
-    Route::get('/me', 'MeController@index');
-    Route::get('/auth/logout', 'MeController@logout');
+    Route::match(["GET", "options"],'/mypage', 'MeController@index');
+    Route::get('/logout', 'MeController@logout');
 });

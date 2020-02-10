@@ -18,7 +18,7 @@ class MeController extends Controller
     {
         return [
             'success' => true,
-            'data' => $request->user()
+            'data' => Auth::user(),
         ];
     }
 
