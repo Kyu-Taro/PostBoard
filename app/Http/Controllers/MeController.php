@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Tymon\JWTAuth\JWTAuht;
+use Tymon\JWTAuth\JWTAuth;
+use Illuminate\Support\Facades\Auth;;
 
 class MeController extends Controller
 {
     protected $auth;
 
-    public function __construct($auth)
+    public function __construct(JWTAuth $auth)
     {
         $this->auth = $auth;
     }
@@ -24,7 +25,7 @@ class MeController extends Controller
 
     public function logout()
     {
-        auth()->logout();
+        Auth::logout();
 
         return [
             'success' => true
