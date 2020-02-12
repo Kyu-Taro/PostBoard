@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\JWTAuth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -81,7 +82,7 @@ class LoginController extends Controller
 
         return [
             'success' => true,
-            'data' => $request->user(),
+            'data' => Auth::user(),
             'token' => $token,
             'states' => 200
         ];
