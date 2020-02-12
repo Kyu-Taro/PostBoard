@@ -18,11 +18,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['prefix' => '/auth'], function(){
-    Route::match(["POST", "options"], '/register', 'Auth\RegisterController@register');
+    Route::post('/register', 'Auth\RegisterController@register');
     Route::post('/login', 'Auth\LoginController@login');
 });
 
 Route::group(['middleware' => 'auth:api'], function(){
-    Route::match(["GET", "options"],'/mypage', 'MeController@index');
+    Route::get("GET",'/mypage', 'MeController@index');
     Route::get('/logout', 'MeController@logout');
 });
