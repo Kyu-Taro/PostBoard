@@ -81,10 +81,7 @@ class LoginController extends Controller
         }
 
         return [
-            'success' => true,
-            'data' => Auth::user(),
             'token' => $token,
-            'states' => 200
         ];
     }
 }

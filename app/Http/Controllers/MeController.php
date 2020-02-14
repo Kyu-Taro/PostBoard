@@ -15,11 +15,10 @@ class MeController extends Controller
         $this->auth = $auth;
     }
 
-    public function index(Request $request)
+    public function me(Request $request)
     {
         return [
-            'success' => true,
-            'data' => Auth::user(),
+            'user' => Auth::user(),
         ];
     }
 
