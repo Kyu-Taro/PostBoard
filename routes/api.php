@@ -25,5 +25,6 @@ Route::group(['prefix' => '/auth'], function(){
 Route::group(['middleware' => 'auth:api'], function(){
     Route::get('/me', 'MeController@me');
     Route::get('/logout', 'MeController@logout');
+    Route::resource('/board','BoardController');
 });
 
