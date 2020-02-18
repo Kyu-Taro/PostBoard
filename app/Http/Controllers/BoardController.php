@@ -15,7 +15,7 @@ class BoardController extends Controller
      */
     public function index()
     {
-        $data = Board::all();
+        $data = Board::with('user')->get();
         return [
             'data' => $data
         ];
