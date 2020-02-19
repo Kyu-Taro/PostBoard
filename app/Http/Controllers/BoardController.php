@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Board;
-use App\User;
 
 class BoardController extends Controller
 {
@@ -16,6 +15,7 @@ class BoardController extends Controller
     public function index()
     {
         $data = Board::with('user')->get();
+        
         return [
             'data' => $data
         ];
@@ -39,7 +39,11 @@ class BoardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $board = new Board;
+        $board->user_id = $request->id;
+        $board->text = $request->text;
+        $board->save();
     }
 
     /**
@@ -50,7 +54,11 @@ class BoardController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Board::find($id)->get();
+
+        return [
+            'data' => $data
+        ];
     }
 
     /**
