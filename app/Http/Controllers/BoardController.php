@@ -15,7 +15,7 @@ class BoardController extends Controller
     public function index()
     {
         $data = Board::with('user')->get();
-        
+
         return [
             'data' => $data
         ];
@@ -54,7 +54,7 @@ class BoardController extends Controller
      */
     public function show($id)
     {
-        $data = Board::find($id)->get();
+        $data = Board::find($id)->with('user')->get();
 
         return [
             'data' => $data
@@ -92,6 +92,6 @@ class BoardController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Board::find($id)->delete();
     }
 }
