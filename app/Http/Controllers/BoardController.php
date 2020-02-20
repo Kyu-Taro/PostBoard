@@ -44,6 +44,7 @@ class BoardController extends Controller
         $board->user_id = $request->id;
         $board->text = $request->text;
         $board->save();
+        return response('',200);
     }
 
     /**
@@ -54,7 +55,7 @@ class BoardController extends Controller
      */
     public function show($id)
     {
-        $data = Board::find($id)->with('user')->get();
+        $data = Board::where('user_id', $id)->with('user')->get();
 
         return [
             'data' => $data
@@ -81,7 +82,10 @@ class BoardController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = Board::find($id);
+        $data->text = $request->text;
+        $data->save();
+        return response('',200);
     }
 
     /**

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\JWTAuth;
 use Illuminate\Support\Facades\Auth;;
+use App\Board;
 
 class MeController extends Controller
 {

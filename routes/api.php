@@ -26,5 +26,6 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::get('/me', 'MeController@me');
     Route::get('/logout', 'MeController@logout');
     Route::resource('/board','BoardController');
+    Route::get('/postData/{id}', 'User\BoardController@postData');
 });
 
