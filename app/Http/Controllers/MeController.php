@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\JWTAuth;
 use Illuminate\Support\Facades\Auth;;
-use App\Board;
+use App\User;
 
 class MeController extends Controller
 {
@@ -27,8 +27,13 @@ class MeController extends Controller
     {
         Auth::logout();
 
-        return [
-            'success' => true
-        ];
+        return response('',200);
+    }
+
+    public function del($id)
+    {
+        User::find($id)->delete();
+
+        return response('',200);
     }
 }

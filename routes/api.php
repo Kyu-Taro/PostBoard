@@ -22,10 +22,14 @@ Route::group(['prefix' => '/auth'], function(){
     Route::post('/login', 'Auth\LoginController@login');
 });
 
+
+
 Route::group(['middleware' => 'auth:api'], function(){
     Route::get('/me', 'MeController@me');
-    Route::get('/logout', 'MeController@logout');
     Route::resource('/board','BoardController');
+    Route::get('/logout', 'MeController@logout');
     Route::get('/postData/{id}', 'User\BoardController@postData');
+    Route::get('/del/{id}', 'MeController@del');
+    Route::resource('/user', 'UserController');
 });
 
